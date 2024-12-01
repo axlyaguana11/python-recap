@@ -23,6 +23,12 @@ class BankAccount():
         else:
             print(f'You must withdraw at least 1 USD.')
         return self.__balance
+   
+   def transfer(self, amount, target):
+       if self.__balance < amount:
+           raise ValueError('Insufficient funds.')
+       self.withdraw(amount)
+       target.deposit(amount)
 
    def get_balance(self):
         return self.__balance
